@@ -46,6 +46,14 @@ def login():
             print("登録情報と一致しません")
     return render_template("company_app/login.html")
 
+@company_app.route("/logout")
+def logout():
+    session.pop('company_id', None)
+    print("logout")
+    flash("ログアウトしました")
+    return redirect(url_for("/"))
+
+
 @company_app.route("/enter_new_regist")
 def enter_new_regist():
     return render_template("company_app/new_regist.html")
