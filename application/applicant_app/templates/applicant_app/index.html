@@ -1,0 +1,10 @@
+#flask_blog/templates/login.html
+{% extends "layout.html" %}
+{% block body %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('compamy_login') }}">企業様ログイン</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('user_init_page') }}">応募者様のページ</a>
+</li>
+{% endblock %}

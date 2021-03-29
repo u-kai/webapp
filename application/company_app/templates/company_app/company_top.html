@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block body %}
+<form action="{{ url_for('company_app.edit') }}" method=post>
+    <div class="form-group">
+        <p>下記が貴方様方の掲載情報になっています</p>
+        <p>編集を行いたい場合は各項目を編集後、下の編集ボタンを押して編集を完了してください</p>
+    </div>
+    <div id="company_name" class="form-group">
+        <h3><label for="InputTitle">企業名</label></h3>
+        <input type="text" class="form-control" id="InputTitle" value="{{ result.company_name }}" name="company_name">
+    </div>
+    <div id="company_message" class="form-group">
+        <h3><label for="InputTitle">企業からのメッセージ</label></h3>
+        <p><textarea name="company_message" cols="100" rows="10">{{ result.company_message }}</textarea></p>
+    </div>
+    <br>
+    <div id="working_time" class="form-group">
+        <h3><label for="InputTitle">勤務時間</label></h3>
+        <input type="text" class="form-control" id="InputTitle" name="working_time" value="{{ result.working_time }}">
+    </div>
+    <button type="submit" class="btn btn-primary">編集する</button>
+</form>
+<br>
+<form action="{{ url_for('company_app.delete') }}" method=post>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" value="#">内容を全て削除する</button>
+    </div>
+
+{% endblock %}

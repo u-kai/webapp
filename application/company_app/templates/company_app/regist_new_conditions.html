@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block body %}
+<p>下記データを入力して新規登録ボタンを押してください</p>
+<form action="{{ url_for('company_app.regist_new_conditions') }}" method=post>
+    <div class="form-group">
+
+        <label for="InputTitle">企業名</label>
+        <input type="text" class="form-control" id="InputTitle" name="company_name">
+        </div>
+        <div class="form-group">
+        <label for="InputTitle">メッセージ</label>
+        <p><textarea name="company_message" cols="100" rows="10"></textarea></p>
+        </div>
+    
+        <div class="form-group">
+        <label for="InputPassword">勤務時間</label>
+        <input type="text" class="form-control" id="InputTitle" name="working_time">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">新規登録</button>
+        </form>
+
+{% endblock %}

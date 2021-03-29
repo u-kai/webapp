@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block body %}
+<form action="{{ url_for('company_app.new_regist') }}" method=post>
+
+        <p>下記の項目をご登録してください</p>
+        <div class="form-group"></div>
+        <label for="InputTitle">企業様名</label>
+        <input type="text" class="form-control" id="InputTitle" name=company_name>
+        </div>
+    
+        <div class="form-group">
+        <label for="InputPassword">パスワード</label>
+        <input type="password" class="form-control" id="InputPassword" name=company_password>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">登録</button>
+        </form>
+        {% endblock %}

@@ -1,0 +1,7 @@
+{% extends "layout.html" %} {% block body %}
+<p>新規ご登録ありがとうございました。</p>
+<p>下記のIDはログイン時に必要になりますのでお控えください</p>
+<p>{{company_id}}</p>
+<a class="nav-link" href="{{ url_for('company_app.login') }}">ログインする</a>
+
+{% endblock %}
