@@ -57,7 +57,7 @@ def new_regist():
     company_name = add_single_quote(request.form["company_name"])
     ###Generate company_id range(100000000~199999999)
     company_id = random.randint(100000000, 199999999)
-    table_operater = TableOperationBySQL(Config=Config, table_name=conditions_table)
+    table_operater = TableOperationBySQL(Config=Config, table_name=certifications_table)
     ###Confirm what company_id is only one
     ###
     condition_dict = {"company_id":company_id,
