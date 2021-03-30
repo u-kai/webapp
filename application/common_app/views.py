@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,flash
 
 common_app = Blueprint("common_app", __name__, template_folder="./templates", static_folder="./static")
 

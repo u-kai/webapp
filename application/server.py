@@ -1,11 +1,13 @@
 from flask import Flask
 from config import Config
+from datetime import timedelta
 app = Flask(__name__)
 def create_app():
     app = Flask(__name__)
     app.secret_key = Config.SECRET_KEY
     app.config["JSON_AS_ASCII"] = False
     app.config["JSON_SORT_KEYS"] = False
+    app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=30)
     app.config.from_object("config.Config")
 
     return app

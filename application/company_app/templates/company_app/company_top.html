@@ -1,8 +1,8 @@
 {% extends "layout.html" %} {% block body %}
 <form action="{{ url_for('company_app.edit') }}" method=post>
     <div class="form-group">
-        <p>下記が貴方様方の掲載情報になっています</p>
-        <p>編集を行いたい場合は各項目を編集後、下の編集ボタンを押して編集を完了してください</p>
+        <p>下記が<b>{{ result.company_name }}</b>様の掲載情報になっています。</p>
+        <p>編集を行いたい場合は各項目を編集後、下の編集ボタンを押して編集を完了してください。</p>
     </div>
     <div id="company_name" class="form-group">
         <h3><label for="InputTitle">企業名</label></h3>

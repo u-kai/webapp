@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <title>flasl_blog</title>
+    <title>Test-Web</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -9,23 +9,28 @@
 
    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class ="navbar-brand" href="#">FlaskBlog</a>
+            <a class ="navbar-brand" href="">Test-Web</a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-Nav" aria-controls="navbar-Nav" ariae-xpanded="false" aria-label="Toggle-navigation">
                 <span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"id="navbarNav"><ul class="nav navbar-nav navbar-right">
-                    <li class="navitem">
-                        <a class="nav-link" href="#">ログイン</a></li>
-                        <li class="navitem"><a class="navlink" href="#">新規投稿</a></li>
-                        <li class="navitem"><a class="navlink" href="#">ログアウト</a></li>
+                <div class="collapse navbar-collapse"id="navbarNav">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if session.company_id %}
+                        <li class="navitem　card"><a class="navlink" href="{{url_for('company_app.logout)}}">ログアウト</a></li>
+                        <li class="navitem card"><a class="navlink" href="{{url_for('applicant.narrow_down)}}">他社の求人情報はこちら</a></li>
+                        {% else %}
+                        <li class="navitem "><a class="navlink" href="{{url_for('company_app.login)}}'">企業様はこちら</a></li>
+                        <li class="navitem"><a class="navlink" href="{{url_for('applicant.narrow_down)}}">求人情報はこちら</a></li>
+                        {% endif %}
                     </ul>
                 </div>
-            </nav>
-            <div class="alert alert-info" role="alert">
-            
-            </div>
+        </nav>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+        {{ message }}
         </div>
+        {% endfor %}
         <div class="blog-body">
-            { %block body% }{ %endblock% }
+            {% block body %}{% endblock %}
         </div>
-</html>
+    </div>
