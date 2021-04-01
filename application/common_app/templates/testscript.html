@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('common_app.test')}}" method="post">
+        <input type="text" value=test1 name="test">
+        <input type="text" value=test2 name="test">
+        <input type="text" value=test3 name="test">
+        <input type="text" value=test4 name="test">
+        <input type="text" value=udo1 name="udo">
+        <input type="text" value=udo2 name="udo">
+        <input type="text" value=udo3 name="udo">
+        <input type="text" value=udo4 name="udo">
+        <input type="submit" value="send">
+        <!-- <input type="button" value="send"> -->
+    </form>
+    <script>
+        clickfunction1 = function(){
+            var formNumber = 7;
+            var previousName = document.forms[0][0].name;
+            var valueArray = [];
+            var objectList = [];
+            for (index = 0; index <= formNumber; index += 1){
+                var name = document.forms[0][index].name;
+                var value = document.forms[0][index].value;
+
+                if(name == previousName){
+                    valueArray.push(value);
+                }else{
+                    var object = { [previousName] : valueArray }
+                    objectList.push(object);
+                    previousName = name;
+                    valueArray = [];
+                    valueArray.push(value);
+                };
+            }
+            object = { [name] : valueArray };
+            objectList.push(object);
+            const jsonText = JSON.stringify(objectList);
+
+            const url = "{{url_for('common_app.test')}}";
+            postData(url, objectList);
+        };
+
+        async function postData(url, object){
+            const response = await fetch(url,{
+                method:"POST",
+                mode:"cors",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(object)
+            })
+            for (i=0; i<1000000000; i++){
+
+            }
+            location.href = "{{url_for('common_app.test')}}";
+            // return response.json();
+        }
+     </script>
+</body>
+</html>
